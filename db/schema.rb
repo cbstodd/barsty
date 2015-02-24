@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150220023323) do
     t.string   "name"
     t.float    "price"
     t.string   "image"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
