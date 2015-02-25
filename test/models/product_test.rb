@@ -11,6 +11,8 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:description].any?
   end
 
+
+  # PRICE
   test 'product price must be positive' do
     product = Product.new(name: 'Vodka',
                           description: 'Lorem ipsum',
@@ -34,5 +36,16 @@ class ProductTest < ActiveSupport::TestCase
                           image: 'image.png')
     product.price = 1
     assert product.valid?
+  end
+
+  # TITLE
+  test 'product is not valid without a unique title' do
+    product = Product.new(name: products(:one).name,
+                          price: 30.00,
+                          image: 'image.png',
+                          description: 'Lorem ipsum' )
+
+    assert product.invalid?
+    assert_equal([ 'has already been taken' ], product.errors[:name])
   end
 end

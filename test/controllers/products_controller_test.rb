@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
+  fixtures :products
   setup do
     @product = products(:one)
   end
@@ -18,10 +19,10 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should create product" do
     assert_difference('Product.count') do
-      post :create, product: { image: @product.image,
-                               name: @product.name,
-                               price: @product.price,
-                               description: @product.description }
+      post :create, product: { image: products(:one).image,
+                               name: products(:two).name,
+                               price: products(:one).price,
+                               description: products(:one).description }
     end
 
     assert_redirected_to product_path(assigns(:product))
