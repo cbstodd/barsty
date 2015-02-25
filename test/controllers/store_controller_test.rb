@@ -9,7 +9,7 @@ class StoreControllerTest < ActionController::TestCase
   test 'should find store index style elements' do
     get :index
     assert_select 'h1', 'Barsty Store'
-    assert_select '.jumbotron'
+    assert_select 'div .jumbotron'
 
 end
 
