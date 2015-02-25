@@ -12,8 +12,8 @@ two:
   image: 'logo.png'
   description: A wonderful rum that takes you back to the islands.
 
-three:
-  name: Makers Mark
+rum:
+  name: Bacardi
   price: 50.00
   image: 'mm.png'
-  description: A fine bourbon that many prefer to drink over ice.
+  description: A fine rum mixes will with coke and ice.

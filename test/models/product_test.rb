@@ -40,7 +40,7 @@ class ProductTest < ActiveSupport::TestCase
 
   # TITLE
   test 'product is not valid without a unique title' do
-    product = Product.new(name: products(:one).name,
+    product = Product.new(name: products(:rum).name,
                           price: 30.00,
                           image: 'image.png',
                           description: 'Lorem ipsum' )
