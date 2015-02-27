@@ -1,4 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Your cart</h1>
+
+  <% @cart.line_items.each do |item| %>
+    <div class="well">
+      <p><%= image_tag(item.product.image.thumb) %></p>
+      <p><h4><%= item.product.name %></h4></p>
+      <p><%= item.product.price %></p>
+
+    </div>
+  <% end %>
+
+
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

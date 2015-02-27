@@ -1,4 +1,8 @@
 class LineItemsController < ApplicationController
+
+  include CurrentCart
+
+  before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -21,9 +25,21 @@ class LineItemsController < ApplicationController
   end
 
   def create
-    @line_item = LineItem.new(line_item_params)
-    @line_item.save
-    respond_with(@line_item)
+    product = Product.find(params[:product_id])
+    @line_item = @cart.line_items.build(product: product)
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to @line_item.cart , notice: 'Item was added
+successfully' }
+        format.json { render action: 'show', status: :created, location:
+                                               @line_item }
+      else
+        format.html { render action:  'new' }
+        format.json { render json: @line_item.errors, status:
+                                                        :unprocessable_entity }
+
+      end
+    end
   end
 
   def update
@@ -37,6 +53,7 @@ class LineItemsController < ApplicationController
   end
 
   private
+
     def set_line_item
       @line_item = LineItem.find(params[:id])
     end
