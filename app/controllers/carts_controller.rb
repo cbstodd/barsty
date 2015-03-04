@@ -1,5 +1,8 @@
 class CartsController < ApplicationController
+
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   respond_to :html
 
@@ -9,6 +12,7 @@ class CartsController < ApplicationController
   end
 
   def show
+    @carts = set_cart
     respond_with(@cart)
   end
 
@@ -23,6 +27,7 @@ class CartsController < ApplicationController
   def create
     @cart = Cart.new(cart_params)
     @cart.save
+
     respond_with(@cart)
   end
 
@@ -37,6 +42,12 @@ class CartsController < ApplicationController
   end
 
   private
+
+    def invalid_cart
+      logger.error 'Attempt to access invalid cart #{params[:id]} '
+      redirect_to root_url, alert: 'Invalid cart', class: 'bg-danger'
+    end
+
     def set_cart
       @cart = Cart.find(params[:id])
     end

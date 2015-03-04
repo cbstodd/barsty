@@ -30,11 +30,12 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart , notice: 'Item was added
-successfully' }
+successfully', class: 'bg-success' }
         format.json { render action: 'show', status: :created, location:
                                                @line_item }
       else
-        format.html { render action:  'new' }
+        format.html { render action:  'new', alert: 'Something went wrong,
+line item  was not saved.' }
         format.json { render json: @line_item.errors, status:
                                                         :unprocessable_entity }
 
@@ -59,6 +60,6 @@ successfully' }
   end
 
   def line_item_params
-    params.require(:line_item).permit(:product_id, :cart_id)
+    params.require(:line_item).permit(:product_id)
   end
 end

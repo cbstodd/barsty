@@ -1,12 +1,12 @@
-<%= form_for(@cart) do |f| %>
+<%= form_for(@cart, html: { class: 'form-horizontal', role: 'form' })  do |f| %>
   <% if @cart.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cart.errors.count, "error") %> prohibited this cart from being saved:</h2>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2><%= pluralize(@cart.errors.count, 'error') %> prohibited this cart from being saved:</h2>
 
       <ul>
-      <% @cart.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @cart.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
