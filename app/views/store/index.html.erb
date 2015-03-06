@@ -1,9 +1,5 @@
 <h1>Barsty Store</h1>
 
-<% if notice %>
-  <p id="notice"> <%= notice %></p>
-<% end %>
-
 <h4><em>Bottles for you to choose from</em></h4>
 
 <% cache ['store', Product.latest] do %>
@@ -11,7 +7,7 @@
     <% cache ['entry', product] do %>
 
     <div class="jumbotron">
-      <%= image_tag(product.image.thumb, class: 'img-rounded') %>
+      <%= image_tag(product.image.large, class: 'img-rounded') %>
       <p><h2><%= product.name %></h2></p>
       <p><%= sanitize(product.description) %></p>
       <p><%= number_to_currency(product.price) %></p>

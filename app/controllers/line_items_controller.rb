@@ -29,13 +29,11 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(product.id)
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart , notice: 'Item was added
-successfully', class: 'bg-success' }
+        format.html { redirect_to @line_item.cart , notice: 'Item was added to your cart' }
         format.json { render action: 'show', status: :created, location:
                                                @line_item }
       else
-        format.html { render action:  'new', alert: 'Something went wrong,
-line item  was not saved.' }
+        format.html { render action:  'new', alert: 'Something went wrong, item  was not saved.' }
         format.json { render json: @line_item.errors, status:
                                                         :unprocessable_entity }
 
@@ -50,7 +48,8 @@ line item  was not saved.' }
 
   def destroy
     @line_item.destroy
-    respond_with(@line_item)
+    respond_with(@line_item.cart)
+
   end
 
   private

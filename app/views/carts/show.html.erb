@@ -1,17 +1,38 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Your cart</h1>
+<p><%= button_to 'Empty your cart', @cart,
+                 method: :delete, data: { confirm: 'Are you sure?' },
+                 class: 'btn btn-primary' %></p>
 
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Bottles</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
 <% @cart.line_items.each do |item| %>
-  <div class="well">
-    <p><em><%= pluralize(item.quantity, item.product.name) %> in your cart</em></p>
-    <p><%= image_tag(item.product.image.thumb) %></p>
-    <p><h4><%= item.product.name %></h4></p>
-    <p><%= number_to_currency(item.product.price) %> per bottle</p>
-
-  </div>
+    <tr class="">
+      <td><%= item.quantity %><br/> <em>each: <%= number_to_currency(item.product.price) %></em></td>
+      <td> <%= item.product.name %><br/><%= image_tag(item.product.image.thumb) %></td>
+      <td><%= number_to_currency(item.total_price) %></td>
+      <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Remove item?' }, class: 'btn btn-sm btn-default' %></td>
+    </tr>
 <% end %>
+    <tr class="active">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><strong>Total: </strong><%= number_to_currency(@cart.total_price) %></td>
+    </tr>
+  </table>
+
 
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
+
+
+

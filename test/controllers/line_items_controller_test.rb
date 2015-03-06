@@ -43,7 +43,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should destroy line_item" do
     assert_difference('LineItem.count', -1) do
-      delete :destroy, id: @line_item
+      delete :destroy, id: @line_item.product_id
     end
 
     assert_redirected_to line_items_path

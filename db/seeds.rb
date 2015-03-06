@@ -8,14 +8,13 @@
 
 Product.delete_all
 
-Product.create(name: 'absolut apeach vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut berry acai vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut citron vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut grapevine'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut kurant vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut mango vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut raspberry vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut ruby red vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut swedish 100 vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut swedish 80 vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
-Product.create(name: 'absolut wild tea vodka'.capitalize, price: Faker::Number.number(2), image:open('public/uploads/product/image/3/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
+Product.create(name: 'absolut vodka'.upcase, price: Faker::Number.number(2),
+               image:open('public/uploads/product/image/1/absolut_vodka.png'), description: Faker::Lorem.paragraph(1))
+Product.create(name: 'patron silver'.upcase, price: Faker::Number.number(2),
+               image:open('public/uploads/product/image/1/patron_silver.jpg'), description: Faker::Lorem.paragraph(1))
+Product.create(name: 'jack daniels'.upcase, price: Faker::Number.number(2),
+               image:open('public/uploads/product/image/1/old-no7.png'), description: Faker::Lorem.paragraph(1))
+Product.create(name: 'Bacardi superior'.upcase, price: Faker::Number.number(2),
+               image:open('public/uploads/product/image/1/Bacardi_Superior.jpg'), description: Faker::Lorem.paragraph(1))
+Product.crate(name: 'Makers Mark'.upcase, price: Faker::Number.number(2),
+              image:open('public/uploads/product/image/1/mm.jpg'), description: Faker::Lorem.paragraph(1))
