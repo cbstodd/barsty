@@ -1,22 +1,24 @@
 <h1>Barsty Store</h1>
 
+<%= render @cart %>
+
 <h4><em>Bottles for you to choose from</em></h4>
 
 <% cache ['store', Product.latest] do %>
-  <% @products.each do |product| %>
-    <% cache ['entry', product] do %>
-
-    <div class="jumbotron">
-      <%= image_tag(product.image.large, class: 'img-rounded') %>
-      <p><h2><%= product.name %></h2></p>
-      <p><%= sanitize(product.description) %></p>
-      <p><%= number_to_currency(product.price) %></p>
-      <p>
-        <%= button_to 'Add to cart', line_items_path(product_id: product),
-                    class: 'btn btn-primary' %>
-      </p>
-    </div>
-
-    <% end %>
-  <% end %>
+<% @products.each do |product| %>
+<% cache ['entry', product] do %>
+  <div class="jumbotron">
+    <%= image_tag(product.image.large, class: 'img-rounded') %>
+    <p><h2><%= product.name %></h2></p>
+    <p><%= sanitize(product.description) %></p>
+    <p><%= number_to_currency(product.price) %></p>
+    <p>
+      <%= button_to 'Add to cart', line_items_path(product_id: product), remote: true,
+                  class: 'btn btn-primary' %>
+    </p>
+  </div>
 <% end %>
+<% end %>
+<% end %>
+
+<%= render 'layouts/footer' %>

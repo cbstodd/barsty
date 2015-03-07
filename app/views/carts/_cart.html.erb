@@ -1,0 +1,19 @@
+<table class="table table-condensed cart-table" id="cart">
+  <thead>
+  <tr>
+    <th>Bottles</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <%= render 'line_items/line_item' %>
+
+  <tr class="active">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="total"><strong>Total: </strong><%= number_to_currency(cart.total_price) %></td>
+  </tr>
+</table>

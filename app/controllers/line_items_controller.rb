@@ -29,13 +29,16 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(product.id)
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart , notice: 'Item was added to your cart' }
-        format.json { render action: 'show', status: :created, location:
-                                               @line_item }
+        format.html { redirect_to root_urlc,
+                                  notice: 'Item was added to your cart' }
+        format.js
+        format.json { render action: 'show', status: :created,
+                             location: @line_item }
       else
-        format.html { render action:  'new', alert: 'Something went wrong, item  was not saved.' }
-        format.json { render json: @line_item.errors, status:
-                                                        :unprocessable_entity }
+        format.html { render action:  'new',
+                             alert: 'Something went wrong, item  was not saved.' }
+        format.json { render json: @line_item.errors,
+                             status: :unprocessable_entity }
 
       end
     end
