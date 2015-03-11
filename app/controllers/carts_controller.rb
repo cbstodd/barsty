@@ -28,7 +28,16 @@ class CartsController < ApplicationController
     @cart = Cart.new(cart_params)
     @cart.save
 
-    respond_with(@cart)
+    respond_to do |format|
+      if @cart.save
+        format.html { redirect_to @cart, notice: 'Cart was updated' }
+        format.json { render action: 'show', status: :created,
+                            location: @cart }
+      else
+        format.html { render action: 'new', alert: 'Cart was not updated' }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
