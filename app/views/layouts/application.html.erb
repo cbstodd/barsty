@@ -9,10 +9,11 @@
 <body>
 
   <%= render 'layouts/navbar' %>
-
   <div class="container">
+    <%= render 'layouts/cart_button' %>
     <%= render 'layouts/error_messages' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </div>
 
 </body>

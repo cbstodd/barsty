@@ -1,8 +1,10 @@
 
 <h1>Your cart</h1>
-<p><%= button_to 'Empty your cart', @cart,
-                 method: :delete, data: { confirm: 'Are you sure?' },
-                 class: 'btn btn-primary' %></p>
+<%= hidden_div_if(@cart.line_items.empty?, id: 'empty-btn')  do %>
+  <p><%= button_to 'Empty your cart', @cart,
+                   method: :delete, data: { confirm: 'Are you sure?' },
+                   class: 'btn btn-primary', id: 'empty-btn' %></p>
+<% end %>
 
   <%= render @cart %>
 

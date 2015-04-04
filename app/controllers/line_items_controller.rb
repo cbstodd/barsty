@@ -52,7 +52,6 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_with(@line_item.cart)
-
   end
 
   private

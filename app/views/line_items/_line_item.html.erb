@@ -2,9 +2,8 @@
   <% if item == @current_item %>
     <tr id="current_item">
       <% else %>
-    </tr>
-    <tr class="">
   <% end %>
+    <tr class="">
       <td><%= item.quantity %><br/><small><em>each: <%= number_to_currency(item.product.price) %></em></small></td>
       <td> <%= item.product.name %><br/><%= image_tag(item.product.image.thumb) %></td>
       <td><%= number_to_currency(item.total_price) %></td>

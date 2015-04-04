@@ -32,7 +32,7 @@ class CartsController < ApplicationController
       if @cart.save
         format.html { redirect_to @cart, notice: 'Cart was updated' }
         format.json { render action: 'show', status: :created,
-                            location: @cart }
+                            location: @cart, alert: 'Cart has been updated' }
       else
         format.html { render action: 'new', alert: 'Cart was not updated' }
         format.json { render json: @cart.errors, status: :unprocessable_entity }
